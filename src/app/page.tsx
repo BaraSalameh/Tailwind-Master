@@ -5,7 +5,10 @@ import { useRouter } from "next/navigation";
 const Home = () => {
     const router = useRouter();
 
+    // Challenges source
+    // https://github.com/bradtraversy/50projects50days/tree/master
     const challenges = [
+        {name: 'Expanding Cards', path: 'expanding-cards'},
         {name: 'Rotating Navigation Animation', path: 'rotating-navigation-animation'}
     ]
 
