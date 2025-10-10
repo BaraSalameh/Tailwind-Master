@@ -10,7 +10,8 @@ const Home = () => {
     const challenges = [
         {name: 'Expanding Cards', path: 'expanding-cards'},
         {name: 'Progress Steps', path: 'progress-steps'},
-        {name: 'Rotating Navigation Animation', path: 'rotating-navigation-animation'}
+        {name: 'Rotating Navigation Animation', path: 'rotating-navigation-animation'},
+        {name: 'Hidden Search Widget', path: 'hidden-search-widget'}
     ]
 
     return (
