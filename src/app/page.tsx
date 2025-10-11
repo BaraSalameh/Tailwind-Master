@@ -11,7 +11,8 @@ const Home = () => {
         {name: 'Expanding Cards', path: 'expanding-cards'},
         {name: 'Progress Steps', path: 'progress-steps'},
         {name: 'Rotating Navigation Animation', path: 'rotating-navigation-animation'},
-        {name: 'Hidden Search Widget', path: 'hidden-search-widget'}
+        {name: 'Hidden Search Widget', path: 'hidden-search-widget'},
+        {name: 'Blurry Loading', path: 'blurry-loading'}
     ]
 
     return (
