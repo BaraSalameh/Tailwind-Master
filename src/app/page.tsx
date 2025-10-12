@@ -12,7 +12,8 @@ const Home = () => {
         {name: 'Progress Steps', path: 'progress-steps'},
         {name: 'Rotating Navigation Animation', path: 'rotating-navigation-animation'},
         {name: 'Hidden Search Widget', path: 'hidden-search-widget'},
-        {name: 'Blurry Loading', path: 'blurry-loading'}
+        {name: 'Blurry Loading', path: 'blurry-loading'},
+        {name: 'Scroll Animation', path: 'scroll-animation'}
     ]
 
     return (
