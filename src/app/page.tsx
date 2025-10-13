@@ -14,7 +14,8 @@ const Home = () => {
         {name: 'Hidden Search Widget', path: 'hidden-search-widget'},
         {name: 'Blurry Loading', path: 'blurry-loading'},
         {name: 'Scroll Animation', path: 'scroll-animation'},
-        {name: 'Split Landing Page', path: 'split-landing-page'}
+        {name: 'Split Landing Page', path: 'split-landing-page'},
+        {name: 'Form Input Wave', path: 'form-input-wave'}
     ]
 
     return (
