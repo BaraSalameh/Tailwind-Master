@@ -13,7 +13,8 @@ const Home = () => {
         {name: 'Rotating Navigation Animation', path: 'rotating-navigation-animation'},
         {name: 'Hidden Search Widget', path: 'hidden-search-widget'},
         {name: 'Blurry Loading', path: 'blurry-loading'},
-        {name: 'Scroll Animation', path: 'scroll-animation'}
+        {name: 'Scroll Animation', path: 'scroll-animation'},
+        {name: 'Split Landing Page', path: 'split-landing-page'}
     ]
 
     return (
