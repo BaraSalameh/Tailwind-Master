@@ -1,32 +1,48 @@
 'use client';
 
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
+
+const soundData = [
+    {label: 'applause', audio: '/sounds/applause.mp3'},
+    {label: 'boo', audio: '/sounds/boo.mp3'},
+    {label: 'gasp', audio: '/sounds/gasp.mp3'},
+    {label: 'tada', audio: '/sounds/tada.mp3'},
+    {label: 'victory', audio: '/sounds/victory.mp3'},
+    {label: 'wrong', audio: '/sounds/wrong.mp3'}
+]
 
 const SoundBoard = () => {
+    const audioRefs = useRef<Record<string, HTMLAudioElement>>({});
 
-    const makeSound = useCallback((audioPath: string) => {
-        const audio = new Audio(audioPath)
-        audio.play().catch(err => {})
+    const playSound = useCallback((label: string) => {
+        Object.values(audioRefs.current).forEach(audio => {
+            if(audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        })
+
+        const sound = audioRefs.current[label];
+        if(sound){
+            sound.play().catch(() => {});
+        }
     }, []);
-
-    const thresholds = [
-        {label: 'applause', audio: '/sounds/applause.mp3'},
-        {label: 'boo', audio: '/sounds/boo.mp3'},
-        {label: 'gasp', audio: '/sounds/gasp.mp3'},
-        {label: 'tada', audio: '/sounds/tada.mp3'},
-        {label: 'victory', audio: '/sounds/victory.mp3'},
-        {label: 'wrong', audio: '/sounds/wrong.mp3'}
-    ]
 
     return(
         <div className="bg-[rgb(161,100,223)] h-screen flex justify-center content-center p-5 gap-10 flex-wrap">
-            {thresholds.map((btn, idx) => 
+            {soundData.map(({label, audio}) =>
                 <button
-                    key={idx}
+                    key={label}
                     className="bg-[rebeccapurple] hover:opacity-90 cursor-pointer outline-0 px-10 py-5 rounded-md text-foreground text-2xl"
-                    onClick={() => makeSound(btn.audio)}
+                    onClick={() => playSound(label)}
                 >
-                    {btn.label}
+                    
+                    {label}    
+                    <audio
+                        ref={el => {if(el) audioRefs.current[label] = el}}
+                        src={audio}
+                    >
+                    </audio>
                 </button>
             )}
         </div>
