@@ -17,7 +17,8 @@ const Home = () => {
         {name: 'Split Landing Page', path: 'split-landing-page'},
         {name: 'Form Input Wave', path: 'form-input-wave'},
         {name: 'Sound Board', path: 'sound-board'},
-        {name: 'Dad Jokes', path: 'dad-jokes'}
+        {name: 'Dad Jokes', path: 'dad-jokes'},
+        {name: 'Event Keycodes', path: 'event-keycodes'}
     ]
 
     return (
