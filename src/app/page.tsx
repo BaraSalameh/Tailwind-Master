@@ -16,7 +16,8 @@ const Home = () => {
         {name: 'Scroll Animation', path: 'scroll-animation'},
         {name: 'Split Landing Page', path: 'split-landing-page'},
         {name: 'Form Input Wave', path: 'form-input-wave'},
-        {name: 'Sound Board', path: 'sound-board'}
+        {name: 'Sound Board', path: 'sound-board'},
+        {name: 'Dad Jokes', path: 'dad-jokes'}
     ]
 
     return (
