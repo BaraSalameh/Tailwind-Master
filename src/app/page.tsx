@@ -19,7 +19,8 @@ const Home = () => {
         {name: 'Sound Board', path: 'sound-board'},
         {name: 'Dad Jokes', path: 'dad-jokes'},
         {name: 'Event Keycodes', path: 'event-keycodes'},
-        {name: 'FAQ Collapse', path: 'faq-collapse'}
+        {name: 'FAQ Collapse', path: 'faq-collapse'},
+        {name: 'Random Choice Picker', path: 'random-choice-picker'}
     ]
 
     return (
