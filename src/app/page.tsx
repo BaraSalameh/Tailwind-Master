@@ -21,7 +21,8 @@ const Home = () => {
         {name: 'Event Keycodes', path: 'event-keycodes'},
         {name: 'FAQ Collapse', path: 'faq-collapse'},
         {name: 'Random Choice Picker', path: 'random-choice-picker'},
-        {name: 'Animatied Navigation', path: 'animated-navigation'}
+        {name: 'Animatied Navigation', path: 'animated-navigation'},
+        {name: 'Incrementing Counter', path: 'incrementing-counter'}
     ]
 
     return (
