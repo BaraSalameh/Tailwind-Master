@@ -23,7 +23,8 @@ const Home = () => {
         {name: 'Random Choice Picker', path: 'random-choice-picker'},
         {name: 'Animatied Navigation', path: 'animated-navigation'},
         {name: 'Incrementing Counter', path: 'incrementing-counter'},
-        {name: 'Drink Water', path: 'drink-water'}
+        {name: 'Drink Water', path: 'drink-water'},
+        {name: 'Movie App', path: 'movie-app'}
     ]
 
     return (
