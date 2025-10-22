@@ -25,7 +25,8 @@ const Home = () => {
         {name: 'Incrementing Counter', path: 'incrementing-counter'},
         {name: 'Drink Water', path: 'drink-water'},
         {name: 'Movie App', path: 'movie-app'},
-        {name: 'Background Slider', path: 'background-slider'}
+        {name: 'Background Slider', path: 'background-slider'},
+        {name: 'Theme Clock', path: 'theme-clock'}
     ]
 
     return (
