@@ -45,7 +45,7 @@ const RandomChoicePicker = () => {
         <div className="bg-[#2b88f0] flex items-center justify-center h-screen text-foreground">
             <div className="flex flex-col w-2/3 sm:w-1/2">
                 <h1 className="text-xl text-center">
-                    Enter all of the choices divided by a comma (','). Press enter when you're done
+                    {`Enter all of the choices divided by a comma (','). Press enter when you're done`}
                 </h1>
                 <textarea
                     ref={inputRef}

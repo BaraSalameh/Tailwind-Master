@@ -52,7 +52,7 @@ const FormInputWave = () => {
                     </label>
                 </div>
                 <button type="submit" className="w-full py-3 cursor-pointer text-background rounded-md bg-[lightblue]">Login</button>
-                <p>Don't have an account? <a href="#" className="text-[lightblue]">Register</a></p>
+                <p>{`Don't have an account?`} <a href="#" className="text-[lightblue]">Register</a></p>
             </form>
         </div>
     )
