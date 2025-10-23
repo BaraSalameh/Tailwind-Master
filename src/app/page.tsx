@@ -26,7 +26,8 @@ const Home = () => {
         {name: 'Drink Water', path: 'drink-water'},
         {name: 'Movie App', path: 'movie-app'},
         {name: 'Background Slider', path: 'background-slider'},
-        {name: 'Theme Clock', path: 'theme-clock'}
+        {name: 'Theme Clock', path: 'theme-clock'},
+        {name: 'Button Ripple Effect', path: 'button-ripple-effect'}
     ]
 
     return (
