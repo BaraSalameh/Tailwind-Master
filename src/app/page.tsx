@@ -27,7 +27,8 @@ const Home = () => {
         {name: 'Movie App', path: 'movie-app'},
         {name: 'Background Slider', path: 'background-slider'},
         {name: 'Theme Clock', path: 'theme-clock'},
-        {name: 'Button Ripple Effect', path: 'button-ripple-effect'}
+        {name: 'Button Ripple Effect', path: 'button-ripple-effect'},
+        {name: 'Drag N Drop', path: 'drag-n-drop'}
     ]
 
     return (
