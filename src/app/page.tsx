@@ -8,6 +8,7 @@ const Home = () => {
     // Challenges source
     // https://github.com/bradtraversy/50projects50days/tree/master
     const challenges = [
+        {name: 'Touch Type', path: 'touch-type'},
         {name: 'Expanding Cards', path: 'expanding-cards'},
         {name: 'Progress Steps', path: 'progress-steps'},
         {name: 'Rotating Navigation Animation', path: 'rotating-navigation-animation'},
