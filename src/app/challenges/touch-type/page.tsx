@@ -1,6 +1,6 @@
 'use client';
 
-import { Redo2, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const TouchType = () => {
@@ -24,8 +24,7 @@ const TouchType = () => {
             inputRef.current.focus();
         }
     }
-
-    
+   
     useEffect(() => {
         const retrieveParagraph = async () => {
             await fetch('https://api.api-ninjas.com/v1/loremipsum?paragraphs=1&start_with_lorem_ipsum=false', {
@@ -91,9 +90,7 @@ const TouchType = () => {
                 </form>
             </div>
             {isDone &&
-                <div
-                    className="relative w-3/4 bg-gray-700 p-4 rounded-2xl"
-                >
+                <div className="relative w-3/4 bg-gray-700 p-4 rounded-2xl">
                     <X
                         className="
                             absolute top-2 right-2
