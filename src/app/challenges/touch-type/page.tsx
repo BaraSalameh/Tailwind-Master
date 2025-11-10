@@ -1,22 +1,38 @@
 'use client';
 
-import { X } from "lucide-react";
+import { Redo2, RemoveFormatting, Upload, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const TouchType = () => {
     const [isDone, setIsDone] = useState(false);
-    const [paragraph, setParagraph] = useState('');
+    const [isUploadOpen, setIsUploadOpen] = useState(false);
+    const [paragraph, setParagraph] = useState('Loading...');
     const [userInput, setUserInput] = useState('');
-    const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    const uploadRef = useRef<HTMLInputElement>(null);
+
+    const handleUserInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const text = e.target.value;
+        if (text.length > paragraph.length) return;
+        setUserInput(text);
+    }
+
+    const handleUserInputSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if(userInput.length < 1) return;
         if(inputRef.current) inputRef.current.disabled = true;
         setIsDone(true);
     }
 
-    const handleClose = () => {
+    const handleUploadParagraphSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if(paragraph.length < 10) return;
+        if(inputRef.current) inputRef.current.focus();
+        setIsUploadOpen(false);
+    }
+
+    const handleCloseResultClick = () => {
         setIsDone(false);
         setUserInput('');
         if(inputRef.current) {
@@ -24,17 +40,50 @@ const TouchType = () => {
             inputRef.current.focus();
         }
     }
+
+    const handleContainerClick = () => {
+        isUploadOpen
+        ? uploadRef.current?.focus()
+        : inputRef.current?.focus();
+    }
+
+    const handleReloadParagraphClick = () => {
+        setUserInput('');
+        retrieveParagraph();
+    }
+
+    const handleUploadParagraphClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+        e.stopPropagation();
+
+        handleClearUserInputClick();
+
+        setIsUploadOpen(prev => {
+            if(prev && inputRef.current) {
+                inputRef.current.focus();
+            } else if (uploadRef.current) {
+                setParagraph('');
+                uploadRef.current.focus();
+            }
+            return !prev;
+        });
+    }
+
+    const handleClearUserInputClick = () => {
+        setUserInput('');
+    }
    
+    const retrieveParagraph = async () => {
+        setParagraph('Loading...');
+
+        await fetch('https://api.api-ninjas.com/v1/loremipsum?paragraphs=1&start_with_lorem_ipsum=false', {
+            headers: {'X-Api-Key': '4fe5mUnMeRElkxN7kxuvMQ==H0PkLgd3pZhYv0hw'}
+        })
+        .then(res => res.json())
+        .then(data => setParagraph(data.text.trimEnd()))
+        .catch(() => setParagraph(`Sorry, couldn't retrieve a new paragraph!`));
+    }
+
     useEffect(() => {
-        const retrieveParagraph = async () => {
-            await fetch('https://api.api-ninjas.com/v1/loremipsum?paragraphs=1&start_with_lorem_ipsum=false', {
-                headers: {'X-Api-Key': '4fe5mUnMeRElkxN7kxuvMQ==H0PkLgd3pZhYv0hw'}
-            })
-            .then(res => res.json())
-            .then(data => setParagraph(data.text.trimEnd()))
-            .catch(() => setParagraph(''));
-        }
-        
         retrieveParagraph();
         inputRef.current?.focus();
     }, []);
@@ -46,8 +95,45 @@ const TouchType = () => {
                 flex flex-col justify-center items-center gap-5
                 text-2xl font-mono
             "
-            onClick={() => inputRef.current?.focus()}
+            onClick={handleContainerClick}
         >
+            <form
+                onSubmit={handleUploadParagraphSubmit}
+                className={`
+                    ${isUploadOpen
+                        ? 'opacity-100'
+                        : 'opacity-0'
+                    }
+                `}
+            >
+                <input
+                    ref={uploadRef}
+                    type="text"
+                    onChange={e => setParagraph(e.target.value)}
+                    value={paragraph}
+                    placeholder="Paste you custom paragraph here then press enter to submit (10ch minimum)"
+                    className={`
+                        w-100
+                        h-30
+                        text-sm placeholder:text-wrap
+                        
+                        transition-opacity duration-200 ease-in
+                    `}
+                />
+            </form>
+            <div
+                className="
+                    flex p-4 rounded-2xl gap-5 bg-gray-700
+                    [&_*]:cursor-pointer [&_*]:hover:scale-90 [&_*]:active:opacity-50
+                "
+            >
+                {/* Regenerate paragraph */}
+                <Redo2 onClick={handleReloadParagraphClick} />
+                {/* Upload new paragraph */}
+                <Upload onClick={handleUploadParagraphClick} />
+                {/* Clear user input */}
+                <RemoveFormatting onClick={handleClearUserInputClick} />
+            </div>
             <div className="relative w-3/4 overflow-hidden">
                 <p
                     className="text-nowrap "
@@ -78,13 +164,13 @@ const TouchType = () => {
                 </p>
                 <form
                     className="absolute -top-2/1"
-                    onSubmit={handleSubmit}
+                    onSubmit={handleUserInputSubmit}
                 >
                     <input
                         onPaste={e => e.preventDefault()}
                         ref={inputRef}
                         type="text"
-                        onChange={e => setUserInput(e.target.value)}
+                        onChange={handleUserInputChange}
                         value={userInput}
                     />
                 </form>
@@ -97,7 +183,7 @@ const TouchType = () => {
                             bg-background rounded-full p-1
                             hover:opacity-80 cursor-pointer
                         "
-                        onClick={handleClose}
+                        onClick={handleCloseResultClick}
                     />
                     <p className="flex flex-wrap text-lg">
                         {userInput.split('').map((char, idx) => 
