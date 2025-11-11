@@ -42,9 +42,11 @@ const TouchType = () => {
     }
 
     const handleContainerClick = () => {
-        isUploadOpen
-        ? uploadRef.current?.focus()
-        : inputRef.current?.focus();
+        if (isUploadOpen) {
+            uploadRef.current?.focus();
+        } else {
+            inputRef.current?.focus();
+        }
     }
 
     const handleReloadParagraphClick = () => {
