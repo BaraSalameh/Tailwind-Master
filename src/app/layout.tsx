@@ -16,8 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CSS Master",
-  description: "AlbaraaSalameh",
+  title: "Tailwind Master — Front-end Practice Lab",
+  description:
+    "A growing collection of focused interface experiments exploring motion, interaction, and modern CSS.",
 };
 
 export default function RootLayout({
